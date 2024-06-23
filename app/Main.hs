@@ -1,8 +1,8 @@
 module Main (main) where
 
-import DrawElevator
+import RenderElevator
 
 main :: IO ()
 main = do
   putStrLn ""
-  mapM_ putStrLn $ drawElevator 2
+  mapM_ putStrLn $ renderElevator 2

@@ -1,18 +1,18 @@
-module DrawElevator
+module RenderElevator
     (
-      drawFloor,
-      drawElevator
+      renderFloor,
+      renderElevator
     ) where
 
-drawTop :: [String]
-drawTop =
+renderTop :: [String]
+renderTop =
   [
     "          _____",
     "__________|   |"
   ]
 
-drawFloor :: Bool -> Int -> [String]
-drawFloor hasElevator floorNumber
+renderFloor :: Bool -> Int -> [String]
+renderFloor hasElevator floorNumber
   | hasElevator =
       [
       "          |   | " ++ show floorNumber,
@@ -24,17 +24,17 @@ drawFloor hasElevator floorNumber
       "__________|   |"
       ]
 
-drawBottom :: [String]
-drawBottom =
+renderBottom :: [String]
+renderBottom =
   [
     "------------------"
   ]
 
-drawElevator :: Int -> [String]
-drawElevator topFloor =
-  drawTop ++
+renderElevator :: Int -> [String]
+renderElevator topFloor =
+  renderTop ++
   middle ++
-  drawBottom
+  renderBottom
     where
-      middle = concatMap (drawFloor False) list
+      middle = concatMap (renderFloor False) list
       list = (reverse [1..topFloor])
