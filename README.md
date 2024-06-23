@@ -38,10 +38,10 @@ So that I can see it move there.
           _____
 __________|   |
           |   | 5
-__________|___|
-          |   | 4
-__________|___|
-          |   | 3
+__________|   |
+          |___| 4
+__________|   |
+          |___| 3
 __________|   |
           |   | 2
 __________|   |
@@ -54,7 +54,7 @@ __________|   |
 ### What are all the possible states of my elevator?
 
 Config:
-	The number of floor
+	The number of floors
 	(the design is unchangable)
 During use:
 	elevator position (at floors and in between floors)
@@ -64,3 +64,6 @@ Maybe in future
 	Floor button pressed (going up or down)
 
 I want the data structure of this to be prioritized over the implimentation of the functionality.
+
+A floor:
+	Line number (position) tuple e.g (3,4)

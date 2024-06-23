@@ -2,9 +2,10 @@ module Main (main) where
 
 import Test.Hspec
 import DrawElevator
+import ElevatorDataTypes
 
-specs :: Spec
-specs = do
+specDrawElevator :: Spec
+specDrawElevator = do
   describe "drawFloor" $ do
     it "should have the right floor number" $
       (head $ drawFloor False 2) `shouldEndWith` "2"
@@ -18,5 +19,12 @@ specs = do
     -- it "should have elevator car top" $
     --   ((drawElevator 2) !! 3) `shouldBe` "__________|___|"
 
+specDataTypes :: Spec
+specDataTypes = do
+  describe "Floor" $ do
+    it "should create FloorPosition with given topLine and bottomLine" $
+      let currentFloor = FloorPosition { topLine = 3, bottomLine = 4 }
+      in (topLine currentFloor, bottomLine currentFloor) `shouldBe` (3, 4)
+
 main :: IO ()
-main = hspec specs
+main = hspec $ sequence_ [specDrawElevator, specDataTypes]

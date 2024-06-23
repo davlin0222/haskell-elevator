@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       DrawElevator
+      ElevatorDataTypes
   other-modules:
       Paths_haskell_elevator
   autogen-modules:
