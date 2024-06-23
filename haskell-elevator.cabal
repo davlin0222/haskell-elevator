@@ -64,4 +64,5 @@ test-suite haskell-elevator-test
   build-depends:
       base >=4.7 && <5
     , haskell-elevator
+    , hspec
   default-language: Haskell2010
