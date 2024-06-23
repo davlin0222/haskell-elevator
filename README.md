@@ -29,3 +29,21 @@ So that I know where it is.
 As a manager,
 I want to tell the elevator where to move,
 So that I can see it move there.
+
+## Thoughts
+
+### Characters to draw with
+
+----|---|---
+    |   | 6
+----|   |---
+    |   | 5
+----|+-+|---
+    |   | 4
+----|+-+|---
+    |   | 3
+----|   |---
+    |   | 2
+----|   |---
+    |   | 1
+----|---|---
