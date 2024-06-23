@@ -1,6 +1,6 @@
 module Main (main) where
 
-import Lib
+import DrawElevator
 
 main :: IO ()
 main = do

@@ -1,7 +1,7 @@
 module Main (main) where
 
 import Test.Hspec
-import Lib
+import DrawElevator
 
 specs :: Spec
 specs = do
