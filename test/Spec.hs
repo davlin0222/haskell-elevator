@@ -2,6 +2,7 @@ module Main (main) where
 
 import Test.Hspec
 import Lib
+-- import Debug.Trace (traceShow)
 
 specs :: Spec
 specs = do
@@ -10,9 +11,9 @@ specs = do
       (head $ drawFloor 2) `shouldEndWith` "2"
   describe "drawElevator" $ do
     it "should have the right top floor number" $
-      (head $ drawElevator 3) `shouldEndWith` "3"
-    it "3 floors should have 4 or more lines" $
-      (length (drawElevator 3)) `shouldSatisfy` (>= 4)
+      (head $ drop 2 $ drawElevator 3) `shouldEndWith` "3"
+    it "2 floors should have 7 lines" $
+      (length (drawElevator 2)) `shouldSatisfy` (== 7)
 
 main :: IO ()
 main = hspec specs

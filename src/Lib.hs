@@ -11,5 +11,21 @@ drawFloor floorNumber =
   "__________|   |"
   ]
 
+drawTop :: [String]
+drawTop =
+  [
+    "          _____",
+    "__________|   |"
+  ]
+
+drawBottom :: [String]
+drawBottom =
+  [
+    "------------------"
+  ]
+
 drawElevator :: Int -> [String]
-drawElevator topFloor = concatMap drawFloor $ reverse [1..topFloor]
+drawElevator topFloor =
+  drawTop ++
+  concatMap drawFloor (reverse [1..topFloor]) ++
+  drawBottom
