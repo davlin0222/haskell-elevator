@@ -2,6 +2,9 @@ module Lib
     ( drawFloor
     ) where
 
-drawFloor :: Int -> String
+drawFloor :: Int -> [String]
 drawFloor floorNumber =
-	"Hello World"
+	[
+	"          |   | " ++ show floorNumber,
+	"__________|   |"
+	]

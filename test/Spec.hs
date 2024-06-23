@@ -6,8 +6,8 @@ import Lib
 specs :: Spec
 specs = do
   describe "drawFloor" $ do
-    it "should return a non empty string" $
-      drawFloor 1 `shouldSatisfy` ((>1) . length)
+    it "should have the right floor number" $
+      (head $ drawFloor 2) `shouldEndWith` "2"
 
 main :: IO ()
 main = hspec specs
