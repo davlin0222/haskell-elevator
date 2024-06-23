@@ -5,4 +5,4 @@ import Lib
 main :: IO ()
 main = do
   putStrLn ""
-  mapM_ putStrLn $ drawElevator 3
+  mapM_ putStrLn $ drawElevator 2

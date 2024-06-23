@@ -4,19 +4,25 @@ module Lib
       drawElevator
     ) where
 
-drawFloor :: Int -> [String]
-drawFloor floorNumber =
-  [
-  "          |   | " ++ show floorNumber,
-  "__________|   |"
-  ]
-
 drawTop :: [String]
 drawTop =
   [
     "          _____",
     "__________|   |"
   ]
+
+drawFloor :: Bool -> Int -> [String]
+drawFloor hasElevator floorNumber
+  | hasElevator =
+      [
+      "          |   | " ++ show floorNumber,
+      "__________|___|"
+      ]
+  | otherwise =
+      [
+      "          |   | " ++ show floorNumber,
+      "__________|   |"
+      ]
 
 drawBottom :: [String]
 drawBottom =
@@ -27,5 +33,8 @@ drawBottom =
 drawElevator :: Int -> [String]
 drawElevator topFloor =
   drawTop ++
-  concatMap drawFloor (reverse [1..topFloor]) ++
+  middle ++
   drawBottom
+    where
+      middle = concatMap (drawFloor False) list
+      list = (reverse [1..topFloor])
