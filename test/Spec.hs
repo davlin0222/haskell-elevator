@@ -21,10 +21,14 @@ specRenderElevator = do
 
 specDataTypes :: Spec
 specDataTypes = do
-  describe "Floor" $ do
+  describe "ElevatorFloorPosition" $ do
     it "should create ElevatorFloorPosition with given topLine and bottomLine" $
       let elevatorFloor = ElevatorFloorPosition { topLine = 3, bottomLine = 4 }
       in (topLine elevatorFloor, bottomLine elevatorFloor) `shouldBe` (3, 4)
+  describe "ElevatorFloor" $ do
+    it "should create ElevatorFloor with floorNumber" $
+      let elevatorFloor = ElevatorFloor { floorNumber = 3 }
+      in (floorNumber elevatorFloor) `shouldBe` 3
 
 main :: IO ()
 main = hspec $ sequence_ [specRenderElevator, specDataTypes]

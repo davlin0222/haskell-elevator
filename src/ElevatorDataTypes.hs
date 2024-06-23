@@ -1,6 +1,7 @@
 module ElevatorDataTypes
     (
-			ElevatorFloorPosition(..)
+			ElevatorFloorPosition(..),
+			ElevatorFloor(..)
     ) where
 
 data ElevatorFloorPosition =
@@ -8,4 +9,11 @@ data ElevatorFloorPosition =
 	{
 		topLine :: Int,
 		bottomLine :: Int
+	}
+
+data ElevatorFloor =
+	ElevatorFloor
+	{
+		floorPosition :: ElevatorFloorPosition,
+		floorNumber :: Int
 	}
