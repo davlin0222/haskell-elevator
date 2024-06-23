@@ -2,6 +2,11 @@
 
 A visual elevator built in haskell using the terminal to visualize its movement.
 
+## Getting started
+
+Run project: `stack run`
+Run tests: `stack test --file-watch`
+
 ## Git commit message standards
 
 Focus on the why and not the how of the change.
