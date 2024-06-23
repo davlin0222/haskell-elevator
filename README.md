@@ -50,3 +50,17 @@ __________|   |
 ------------------
 
 ```
+
+### What are all the possible states of my elevator?
+
+Config:
+	The number of floor
+	(the design is unchangable)
+During use:
+	elevator position (at floors and in between floors)
+	elevator doors opened or closed
+Maybe in future
+	People inside or not
+	Floor button pressed (going up or down)
+
+I want the data structure of this to be prioritized over the implimentation of the functionality.
