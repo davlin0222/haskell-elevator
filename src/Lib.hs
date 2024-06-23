@@ -1,6 +1,7 @@
 module Lib
-    ( someFunc
+    ( drawFloor
     ) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+drawFloor :: Int -> [String]
+drawFloor floorNumber =
+	["Hello World"]

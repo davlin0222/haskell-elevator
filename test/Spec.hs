@@ -1,13 +1,13 @@
+module Main (main) where
+
 import Test.Hspec
+import Lib
 
 specs :: Spec
 specs = do
-  describe "Example Test Suite" $ do
-    it "should add two numbers correctly" $
-      (1 + 1) `shouldBe` 2
-
-    it "should concatenate two strings" $
-      ("hello" ++ " " ++ "world") `shouldBe` "hello world"
+  describe "drawFloor" $ do
+    it "should return a string" $
+      drawFloor 1 `shouldBe` ["Hello World"]
 
 main :: IO ()
 main = hspec specs
