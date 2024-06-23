@@ -1,6 +1,11 @@
 module Main (main) where
 
-import Lib
+drawFloor floorNumber =
+	[
+	"          |   | 3",
+	"__________|   |"
+	]
 
 main :: IO ()
-main = someFunc
+main = do
+	mapM_ putStrLn $ drawFloor 1
