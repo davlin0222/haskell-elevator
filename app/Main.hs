@@ -17,24 +17,19 @@ controlLoop elevator = do
   newFloorNumber <- promptFloorNumber
   let updatedElevator = moveElevator elevator newFloorNumber
   controlLoop updatedElevator
+  where
+    promptFloorNumber :: IO Int
+    promptFloorNumber = do
+      putStrLn "Move elevator to floor number:"
+      input <- getLine
+      case readMaybe input of
+        Just floorNum | (isValidFloor $ numOfFloors elevator) floorNum -> return floorNum
+        _ -> do
+          putStrLn "Invalid input. Please enter a valid floor number."
+          promptFloorNumber
 
-promptFloorNumber :: IO Int
-promptFloorNumber = do
-  putStrLn "Move elevator to floor number:"
-  input <- getLine
-  case readMaybe input of
-    Just floorNum | isValidFloor floorNum -> return floorNum
-    _ -> do
-      putStrLn "Invalid input. Please enter a valid floor number."
-      promptFloorNumber
-
-  -- putStrLn "Move elevator to floor number:"
-  -- newFloorNumber <- readLn :: IO Int
-  -- putStrLn $ "New floor number: " ++ show newFloorNumber
-  -- putStrLn $ renderElevator updatedElevator
-
-isValidFloor :: Int -> Bool
-isValidFloor floor = floor >= 1
+isValidFloor :: Int -> Int -> Bool
+isValidFloor topFloor floorNumber = floorNumber >= 1 && floorNumber <= topFloor
 
 moveElevator :: Elevator -> Int -> Elevator
 moveElevator e newFloor
