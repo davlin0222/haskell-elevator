@@ -10,25 +10,38 @@ main :: IO ()
 main = do
   putStrLn "Elevator control system starting..."
   let initialElevator = Elevator { topFloor = 3, state = ElevatorState { cabFloor = 1 } }
-  controlLoop initialElevator
+  renderLoop initialElevator
 
-controlLoop :: Elevator -> IO ()
-controlLoop elevator = do
-  putStrLn "\ESC[2J\ESC[H"
+clearTerminal :: IO ()
+clearTerminal = putStrLn "\ESC[2J\ESC[H"
+
+renderLoop :: Elevator -> IO ()
+renderLoop elevator = do
+  clearTerminal
   putStrLn $ renderElevator elevator
-  newFloorNumber <- promptFloorNumber
+  newFloorNumber <- promptFloorNumber elevator
   let updatedElevator = moveElevator elevator newFloorNumber
-  controlLoop updatedElevator
+  renderLoop updatedElevator
+
+promptFloorNumber :: Elevator -> IO Int
+promptFloorNumber elevator = do
+  putStrLn "Move elevator to floor number:"
+  input <- getLine
+  handleInput elevator input
+
+handleInput :: Elevator -> String -> IO Int
+handleInput elevator input =
+  case readMaybe input of
+    Just floorNum ->
+      if isValidFloor floorNum (topFloor elevator)
+        then return floorNum
+        else retryPrompt
+    _ -> retryPrompt
   where
-    promptFloorNumber :: IO Int
-    promptFloorNumber = do
-      putStrLn "Move elevator to floor number:"
-      input <- getLine
-      case readMaybe input of
-        Just floorNum | (isValidFloor elevator) floorNum -> return floorNum
-        _ -> do
-          putStrLn "Invalid input. Please enter a valid floor number."
-          promptFloorNumber
+    retryPrompt :: IO Int
+    retryPrompt = do
+      putStrLn "Invalid input. Please enter a valid floor number."
+      promptFloorNumber elevator
 
 isValidFloor :: Elevator -> Int -> Bool
 isValidFloor elevator floorNumber = floorNumber >= 1 && floorNumber <= topFloor elevator
