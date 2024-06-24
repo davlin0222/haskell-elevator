@@ -6,10 +6,10 @@ data Elevator = Elevator {numOfFloors :: Int}
 
 renderElevator :: Elevator -> String
 renderElevator elevator =
-  concat renderFloors
+    unlines renderFloors
     where
-      renderFloors = map renderFloor (reverse [1..numOfFloors elevator])
-      renderFloor floorNumber = unlines [
+      renderFloors = concatMap renderFloor (reverse [1..numOfFloors elevator])
+      renderFloor floorNumber = [
           "     |   | " ++ show floorNumber,
           "_____|   |"
         ]
