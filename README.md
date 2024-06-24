@@ -32,6 +32,10 @@ So that I can see it move there.
 
 ## Thoughts
 
+### Might be terminal specific
+
+`putStrLn "\ESC[2J\ESC[H"`
+
 ### Characters to draw with
 
 ```

@@ -13,6 +13,7 @@ main = do
 
 controlLoop :: Elevator -> IO ()
 controlLoop elevator = do
+  putStrLn "\ESC[2J\ESC[H"
   putStrLn $ renderElevator elevator
   newFloorNumber <- promptFloorNumber
   let updatedElevator = moveElevator elevator newFloorNumber
