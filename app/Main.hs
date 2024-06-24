@@ -1,6 +1,6 @@
 module Main (main) where
 
-data Elevator = Elevator {name :: String}
+data Elevator = Elevator {numOfFloors :: Int}
 
 main :: IO ()
 main = do
@@ -8,5 +8,5 @@ main = do
   putStrLn $ renderElevator elevator
   where
     renderElevator elevator =
-      "Name: " ++ name elevator
-    elevator = Elevator {name = "Hi"}
+      "NumOfFloors: " ++ (show $ numOfFloors elevator)
+    elevator = Elevator {numOfFloors = 3}
