@@ -2,6 +2,8 @@
 
 A visual elevator built in haskell using the terminal to visualize its movement.
 
+![Elevator moving from floor 3 to floor 1](docs/assets/elevator-3to1.png)
+
 ## Getting started
 
 Run project: `stack run`
