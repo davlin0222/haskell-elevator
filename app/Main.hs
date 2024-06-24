@@ -25,5 +25,8 @@ main :: IO ()
 main = do
   putStrLn ""
   putStrLn $ renderElevator elevator
+  putStrLn "Move elevetor to floor number:"
+  newFloorNumber <- readLn :: IO Int
+  putStrLn $ "New floor number: " ++ show newFloorNumber
   where
-    elevator = Elevator {numOfFloors = 3, cabFloorPosition = 2}
+    elevator = Elevator {numOfFloors = 3, cabFloorPosition = 3}
