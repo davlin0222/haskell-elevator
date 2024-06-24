@@ -25,37 +25,31 @@ controlLoop elevator = do
       putStrLn "Move elevator to floor number:"
       input <- getLine
       case readMaybe input of
-        Just floorNum | (isValidFloor $ topFloor elevator) floorNum -> return floorNum
+        Just floorNum | (isValidFloor elevator) floorNum -> return floorNum
         _ -> do
           putStrLn "Invalid input. Please enter a valid floor number."
           promptFloorNumber
 
-isValidFloor :: Int -> Int -> Bool
-isValidFloor topFloor floorNumber = floorNumber >= 1 && floorNumber <= topFloor
+isValidFloor :: Elevator -> Int -> Bool
+isValidFloor elevator floorNumber = floorNumber >= 1 && floorNumber <= topFloor elevator
 
 moveElevator :: Elevator -> Int -> Elevator
-moveElevator elevator newFloor
-  | newFloor > topFloor elevator =
-      elevator { state = (state elevator) { cabFloor = topFloor elevator } }
-  | newFloor < 1 =
-      elevator { state = (state elevator) { cabFloor = 1 } }
-  | otherwise =
-      elevator { state = (state elevator) { cabFloor = newFloor } }
-
+moveElevator elevator newFloor =
+  elevator { state = (state elevator) { cabFloor = newFloor } }
 
 renderElevator :: Elevator -> String
 renderElevator elevator =
-	unlines renderFloors
-	where
-		renderFloors = concatMap renderFloor (reverse [1..topFloor elevator])
-		renderFloor floorNumber
-			| cabFloor (state elevator) == floorNumber || cabFloor (state elevator) + 1 == floorNumber =
-				[
-					"     |   | " ++ show floorNumber,
-					"_____|___| "
-				]
-			| otherwise =
-				[
-					"     |   | " ++ show floorNumber,
-					"_____|   | "
-				]
+  unlines renderFloors
+  where
+    renderFloors = concatMap renderFloor (reverse [1..topFloor elevator])
+    renderFloor floorNumber
+      | cabFloor (state elevator) == floorNumber || cabFloor (state elevator) + 1 == floorNumber =
+        [
+          "     |   | " ++ show floorNumber,
+          "_____|___| "
+        ]
+      | otherwise =
+        [
+          "     |   | " ++ show floorNumber,
+          "_____|   | "
+        ]
