@@ -1,8 +1,6 @@
 module Main (main) where
 
-import RenderElevator
+import Lib
 
 main :: IO ()
-main = do
-  putStrLn ""
-  mapM_ putStrLn $ renderElevator 2
+main = someFunc

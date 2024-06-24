@@ -57,4 +57,3 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - haskell-elevator
-    - hspec
