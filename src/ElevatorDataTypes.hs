@@ -17,3 +17,10 @@ data ElevatorFloor =
 		floorPosition :: ElevatorFloorPosition,
 		floorNumber :: Int
 	}
+
+data Elevator =
+	Elevator
+	{
+		floors :: [ElevatorFloor],
+		cabPosition :: ElevatorFloorPosition
+	}
