@@ -1,6 +1,7 @@
 module Main (main) where
 
 -- import Debug.Trace (traceShow)
+import Text.Read (readMaybe)  -- Import readMaybe explicitly from Text.Read
 
 data Elevator = Elevator {numOfFloors :: Int, cabFloorPosition :: Int}
 
@@ -13,12 +14,27 @@ main = do
 controlLoop :: Elevator -> IO ()
 controlLoop elevator = do
   putStrLn $ renderElevator elevator
-  putStrLn "Move elevator to floor number:"
-  newFloorNumber <- readLn :: IO Int
+  newFloorNumber <- promptFloorNumber
   let updatedElevator = moveElevator elevator newFloorNumber
-  putStrLn $ "New floor number: " ++ show newFloorNumber
-  putStrLn $ renderElevator updatedElevator
   controlLoop updatedElevator
+
+promptFloorNumber :: IO Int
+promptFloorNumber = do
+  putStrLn "Move elevator to floor number:"
+  input <- getLine
+  case readMaybe input of
+    Just floorNum | isValidFloor floorNum -> return floorNum
+    _ -> do
+      putStrLn "Invalid input. Please enter a valid floor number."
+      promptFloorNumber
+
+  -- putStrLn "Move elevator to floor number:"
+  -- newFloorNumber <- readLn :: IO Int
+  -- putStrLn $ "New floor number: " ++ show newFloorNumber
+  -- putStrLn $ renderElevator updatedElevator
+
+isValidFloor :: Int -> Bool
+isValidFloor floor = floor >= 1
 
 moveElevator :: Elevator -> Int -> Elevator
 moveElevator e newFloor
