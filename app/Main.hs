@@ -1,6 +1,11 @@
 module Main (main) where
 
-import Lib
+data Elevator = Elevator {name :: String} deriving (Show)
 
 main :: IO ()
-main = someFunc
+main = do
+  putStrLn ""
+  putStrLn $ renderElevator elevator
+  where
+    renderElevator elevator = show elevator
+    elevator = Elevator {name = "Hi"}
